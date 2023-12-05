@@ -2,7 +2,7 @@
  * returns a string of all the set values that start with the given `startString`.
  */
 export default function cleanSet(set, startString) {
-  let result = '';
+  const result = '';
 
   if (!startString || !startString.length) {
     return result;
