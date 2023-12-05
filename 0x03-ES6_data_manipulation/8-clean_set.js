@@ -3,14 +3,13 @@
  */
 export default function cleanSet(set, startString) {
   const len = startString.length;
-
-  if (len < 1) {
+  if (!startString || !len) {
     return '';
   }
 
   const filtered = [];
   set.forEach((element) => {
-    if (element.startsWith(startString)) {
+    if (element && element.startsWith(startString)) {
       filtered.push(element.slice(len));
     }
   });
