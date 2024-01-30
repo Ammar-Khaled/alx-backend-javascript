@@ -60,10 +60,11 @@ const app = http.createServer((req, res) => {
   if (url.pathname === '/') {
     res.end('Hello Holberton School!');
   } else if (url.pathname === '/students') {
+    const message = 'This is the list of our students\n';
     countStudents(process.argv[2]).then((payload) => {
-      res.end(`This is the list of our students\n${payload.join('\n')}`);
+      res.end(message + payload.join('\n'));
     }).catch((err) => {
-      res.end(err.message);
+      res.end(message + err.message);
     });
   }
 });

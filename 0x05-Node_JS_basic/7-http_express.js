@@ -64,12 +64,13 @@ app.get('/', (_, res) => {
 app.get('/students', (_, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
+  const message = 'This is the list of our students\n';
   countStudents(process.argv[2])
     .then((payload) => {
-      res.send(`This is the list of our students\n${payload.join('\n')}`);
+      res.send(message + payload.join('\n'));
     })
     .catch((err) => {
-      res.send(err.message);
+      res.send(message + err.message);
     });
 });
 
