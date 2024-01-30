@@ -62,6 +62,8 @@ const app = http.createServer((req, res) => {
   } else if (url.pathname === '/students') {
     countStudents(process.argv[2]).then((payload) => {
       res.end(`This is the list of our students\n${payload.join('\n')}`);
+    }).catch((err) => {
+      res.end(err.message)
     });
   }
 });
