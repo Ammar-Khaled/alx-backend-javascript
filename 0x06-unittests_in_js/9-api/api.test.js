@@ -46,4 +46,16 @@ describe("Cart page", () => {
       expect(body).to.contain("Cannot GET /cart/abc");
     });
   });
+
+  it("should have the correct content type", () => {
+    request("http://localhost:7865/cart/12", (_err, res, _body) => {
+      expect(res.headers["content-type"]).to.equal("text/html; charset=utf-8");
+    });
+  });
+
+  it("should have the correct content length", () => {
+    request("http://localhost:7865/cart/12", (_err, res, _body) => {
+      expect(res.headers["content-length"]).to.equal("27");
+    });
+  });
 });
