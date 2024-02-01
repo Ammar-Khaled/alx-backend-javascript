@@ -20,7 +20,7 @@ app.get("/available_payments", (req, res) => {
   });
 });
 
-app.use(express.json())
+app.use(express.json());
 
 app.post("/login", (req, res) => {
   const username = req.body.userName;
