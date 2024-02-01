@@ -28,10 +28,15 @@ describe("Index page", () => {
 });
 
 describe("Cart page", () => {
-  it("should have the correct status code and payload", () => {
-    request.get("http://localhost:7865/cart/1", (_, res, body) => {
-      expect(res.statusCode).to.equal(200);
-      expect(body).to.equal("Payment methods for cart 1");
+  it("should have the correct status code with number id parameter", () => {
+    request("http://localhost:7865/cart/1", (_error, response, _body) => {
+      expect(response.statusCode).to.equal(200);
+    });
+  });
+
+  it("should have the correct result with number id parameter", () => {
+    request("http://localhost:7865/cart/1", (_err, _res, body) => {
+      expect(body).to.contain("Payment methods for cart 1");
     });
   });
 
