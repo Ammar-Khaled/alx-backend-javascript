@@ -1,12 +1,11 @@
-const e = require("express");
 const express = require("express");
 const app = express();
 
 app.get("/", (_, res) => {
-  res.status(200).send("Welcome to the payment system");
+  res.send("Welcome to the payment system");
 });
 
-app.get("/cart/:id(\\d+)", (req, res) => {
+app.get("/cart/:id([0-9]+)", (req, res) => {
   const id = parseInt(req.params.id);
   res.send(`Payment methods for cart ${id}`);
 });
