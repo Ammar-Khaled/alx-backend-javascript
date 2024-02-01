@@ -11,6 +11,7 @@ app.get("/cart/:id(\\d+)", (req, res) => {
 });
 
 app.get("/available_payments", (req, res) => {
+  res.set("Content-Type", "application/json");
   res.send({
     payment_methods: {
       credit_cards: true,
@@ -19,11 +20,15 @@ app.get("/available_payments", (req, res) => {
   });
 });
 
-app.use(express.json());
+app.use(express.json())
 
 app.post("/login", (req, res) => {
-  const userName = req.body.userName;
-  res.send(`Welcome ${userName}`);
+  const username = req.body.userName;
+  if (!username) {
+    res.status(404).send();
+  } else {
+    res.send(`Welcome ${username}`);
+  }
 });
 
 app.listen(7865, () => {
